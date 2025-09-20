@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to PNG Converter for Chrome Extension Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .icon-container {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #3367d6;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chrome Extension Icon Generator</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>The icons will be generated automatically when you load this page</li>
+            <li>Right-click on each canvas and select "Save image as..."</li>
+            <li>Save each icon with the corresponding filename (icon16.png, icon32.png, etc.)</li>
+            <li>Place the PNG files in the /icons/ directory of your extension</li>
+        </ol>
+    </div>
+
+    <div class="icon-container">
+        <h3>16x16 Icon</h3>
+        <canvas id="canvas16" width="16" height="16"></canvas>
+        <button onclick="downloadIcon('canvas16', 'icon16.png')">Download icon16.png</button>
+    </div>
+
+    <div class="icon-container">
+        <h3>32x32 Icon</h3>
+        <canvas id="canvas32" width="32" height="32"></canvas>
+        <button onclick="downloadIcon('canvas32', 'icon32.png')">Download icon32.png</button>
+    </div>
+
+    <div class="icon-container">
+        <h3>48x48 Icon</h3>
+        <canvas id="canvas48" width="48" height="48"></canvas>
+        <button onclick="downloadIcon('canvas48', 'icon48.png')">Download icon48.png</button>
+    </div>
+
+    <div class="icon-container">
+        <h3>128x128 Icon</h3>
+        <canvas id="canvas128" width="128" height="128"></canvas>
+        <button onclick="downloadIcon('canvas128', 'icon128.png')">Download icon128.png</button>
+    </div>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Draw background with rounded corners
+            const radius = Math.max(2, size / 8);
+            ctx.fillStyle = '#4285F4';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+            
+            // Draw text "LA"
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('LA', size / 2, size / 2);
+        }
+
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Add roundRect method if not available
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+
+        // Generate all icons when page loads
+        window.onload = function() {
+            createIcon('canvas16', 16);
+            createIcon('canvas32', 32);
+            createIcon('canvas48', 48);
+            createIcon('canvas128', 128);
+        };
+    </script>
+</body>
+</html>

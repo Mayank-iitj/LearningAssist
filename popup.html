@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Learning Assistant</title>
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Learning Assistant</h1>
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Dark Mode</span>
+      </div>
+    </header>
+
+    <div class="feature-tabs">
+      <div class="tab active" data-tab="summarizer">Summarize</div>
+      <div class="tab" data-tab="rewriter">Rewrite</div>
+      <div class="tab" data-tab="translator">Translate</div>
+      <div class="tab" data-tab="proofreader">Proofread</div>
+      <div class="tab" data-tab="prompter">Questions</div>
+    </div>
+
+    <div class="tab-content">
+      <!-- Summarizer Tab -->
+      <div class="tab-pane active" id="summarizer">
+        <div class="control-panel">
+          <div class="input-group">
+            <label for="summaryLength">Summary Length:</label>
+            <select id="summaryLength">
+              <option value="short">Short</option>
+              <option value="medium" selected>Medium</option>
+              <option value="long">Long</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="detailLevel">Detail Level:</label>
+            <select id="detailLevel">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <button id="summarizeBtn" class="primary-btn">Summarize Selected Text</button>
+        </div>
+        <div class="result-container">
+          <div class="result-header">
+            <h3>Summary</h3>
+            <div class="action-buttons">
+              <button class="icon-btn" id="copySummary" title="Copy to clipboard">📋</button>
+              <button class="icon-btn" id="saveSummary" title="Save to bookmarks">📌</button>
+            </div>
+          </div>
+          <div class="result-content" id="summaryResult">
+            <p class="placeholder-text">Summarized text will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rewriter Tab -->
+      <div class="tab-pane" id="rewriter">
+        <div class="control-panel">
+          <div class="input-group">
+            <label for="rewriteStyle">Writing Style:</label>
+            <select id="rewriteStyle">
+              <option value="formal">Formal</option>
+              <option value="casual" selected>Casual</option>
+              <option value="simple">Simple</option>
+              <option value="academic">Academic</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="readingLevel">Reading Level:</label>
+            <select id="readingLevel">
+              <option value="elementary">Elementary</option>
+              <option value="middle">Middle School</option>
+              <option value="high">High School</option>
+              <option value="college" selected>College</option>
+            </select>
+          </div>
+          <button id="rewriteBtn" class="primary-btn">Rewrite Selected Text</button>
+        </div>
+        <div class="result-container">
+          <div class="result-header">
+            <h3>Rewritten Text</h3>
+            <div class="action-buttons">
+              <button class="icon-btn" id="copyRewrite" title="Copy to clipboard">📋</button>
+              <button class="icon-btn" id="saveRewrite" title="Save to bookmarks">📌</button>
+            </div>
+          </div>
+          <div class="result-content" id="rewriteResult">
+            <p class="placeholder-text">Rewritten text will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Translator Tab -->
+      <div class="tab-pane" id="translator">
+        <div class="control-panel">
+          <div class="input-group">
+            <label for="targetLanguage">Target Language:</label>
+            <select id="targetLanguage">
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="zh">Chinese</option>
+              <option value="ar">Arabic</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </div>
+          <button id="translateBtn" class="primary-btn">Translate Selected Text</button>
+        </div>
+        <div class="result-container">
+          <div class="result-header">
+            <h3>Translation</h3>
+            <div class="action-buttons">
+              <button class="icon-btn" id="copyTranslation" title="Copy to clipboard">📋</button>
+              <button class="icon-btn" id="saveTranslation" title="Save to bookmarks">📌</button>
+            </div>
+          </div>
+          <div class="result-content" id="translationResult">
+            <p class="placeholder-text">Translated text will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proofreader Tab -->
+      <div class="tab-pane" id="proofreader">
+        <div class="control-panel">
+          <textarea id="proofreadInput" placeholder="Enter or paste text to proofread..."></textarea>
+          <button id="proofreadBtn" class="primary-btn">Proofread Text</button>
+        </div>
+        <div class="result-container">
+          <div class="result-header">
+            <h3>Proofread Result</h3>
+            <div class="action-buttons">
+              <button class="icon-btn" id="copyProofread" title="Copy to clipboard">📋</button>
+              <button class="icon-btn" id="saveProofread" title="Save to bookmarks">📌</button>
+            </div>
+          </div>
+          <div class="result-content" id="proofreadResult">
+            <p class="placeholder-text">Proofread text with suggestions will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Questions/Prompter Tab -->
+      <div class="tab-pane" id="prompter">
+        <div class="control-panel">
+          <div class="input-group">
+            <label for="questionType">Generate:</label>
+            <select id="questionType">
+              <option value="quiz">Quiz Questions</option>
+              <option value="flashcards">Flashcards</option>
+              <option value="studyNotes">Study Notes</option>
+              <option value="explanation">Detailed Explanation</option>
+            </select>
+          </div>
+          <button id="generateQuestionsBtn" class="primary-btn">Generate from Selected Text</button>
+        </div>
+        <div class="result-container">
+          <div class="result-header">
+            <h3>Generated Content</h3>
+            <div class="action-buttons">
+              <button class="icon-btn" id="copyQuestions" title="Copy to clipboard">📋</button>
+              <button class="icon-btn" id="saveQuestions" title="Save to bookmarks">📌</button>
+            </div>
+          </div>
+          <div class="result-content" id="questionsResult">
+            <p class="placeholder-text">Generated questions or content will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="multimodal-input">
+      <h3>Multimodal Input</h3>
+      <div class="input-options">
+        <button id="screenshotBtn" class="secondary-btn">Take Screenshot</button>
+        <label for="imageUpload" class="secondary-btn">Upload Image</label>
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-buttons">
+        <button id="openBookmarksBtn">My Bookmarks</button>
+        <button id="feedbackBtn">Feedback</button>
+      </div>
+      <div class="connection-status">
+        <span id="connectionIcon" class="online">●</span>
+        <span id="connectionText">Online</span>
+      </div>
+    </footer>
+  </div>
+
+  <div id="bookmarksModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>My Bookmarks</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="bookmarks-list">
+          <!-- Bookmarks will be loaded here dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/popup.js"></script>
+</body>
+</html>

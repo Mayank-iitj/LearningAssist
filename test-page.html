@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Assistant - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .test-text {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 2px 4px;
+        }
+        h1, h2 {
+            color: #4285f4;
+        }
+        .error-text {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Learning Assistant - Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h3>Testing Instructions:</h3>
+        <ol>
+            <li>Load the extension in Chrome by going to <code>chrome://extensions/</code></li>
+            <li>Enable "Developer mode" and click "Load unpacked"</li>
+            <li>Select the LearningAssistant folder</li>
+            <li>The extension icon should appear in your toolbar</li>
+            <li>Select any text below and test the extension features</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>1. Test Summarization</h2>
+        <p><strong>Instructions:</strong> Select the text below and use the summarize feature.</p>
+        <div class="test-text">
+            Artificial Intelligence (AI) has revolutionized numerous industries and continues to shape the future of technology. 
+            Machine learning, a subset of AI, enables computers to learn and improve from experience without being explicitly programmed. 
+            Deep learning, which uses neural networks with multiple layers, has been particularly successful in tasks such as image recognition, 
+            natural language processing, and speech recognition. The applications of AI are vast and varied, ranging from autonomous vehicles 
+            and medical diagnosis to recommendation systems and financial fraud detection. As AI technology continues to advance, it presents 
+            both opportunities and challenges for society, including concerns about job displacement, privacy, and ethical considerations. 
+            The development of responsible AI systems that are transparent, fair, and accountable is crucial for ensuring that AI benefits 
+            humanity while minimizing potential risks.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Test Rewriting</h2>
+        <p><strong>Instructions:</strong> Select the text below and use the rewrite feature with different styles.</p>
+        <div class="test-text">
+            The utilization of advanced computational methodologies facilitates the enhancement of organizational operational efficiency. 
+            Subsequently, enterprises can demonstrate substantial improvements in their productivity metrics and cost-effectiveness ratios. 
+            Furthermore, the implementation of sophisticated algorithms enables the optimization of resource allocation and workflow management.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test Translation</h2>
+        <p><strong>Instructions:</strong> Select the text below and translate it to different languages.</p>
+        <div class="test-text">
+            Hello, welcome to our AI Learning Assistant. This tool helps you understand and process information more effectively. 
+            You can summarize long articles, rewrite complex text, translate content, and generate study materials.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Test Proofreading</h2>
+        <p><strong>Instructions:</strong> Copy the text below (with errors) into the proofreader.</p>
+        <div class="error-text">
+            This is a test sentance with severl erors. I definately need to recieve help with my writting. 
+            The spellchecker should catch these mistak,es and provide sugestions for improvement.  
+            There are also some grammer issues that need to be adressed.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Test Question Generation</h2>
+        <p><strong>Instructions:</strong> Select the text below and generate quiz questions or flashcards.</p>
+        <div class="test-text">
+            The water cycle is the continuous movement of water on, above, and below the surface of the Earth. 
+            It consists of several key processes: evaporation, condensation, precipitation, and collection. 
+            Evaporation occurs when the sun heats water in rivers, lakes, and oceans, turning it into vapor. 
+            This water vapor rises into the atmosphere where it cools and condenses into tiny droplets, forming clouds. 
+            When these droplets become too heavy, they fall as precipitation (rain, snow, sleet, or hail). 
+            The water then collects in bodies of water and the cycle begins again.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>6. Test Image Analysis</h2>
+        <p><strong>Instructions:</strong> Use the screenshot or image upload feature in the extension popup.</p>
+        <div style="text-align: center; padding: 20px;">
+            <svg width="200" height="100" style="border: 1px solid #ccc;">
+                <rect width="200" height="100" fill="#f0f0f0"/>
+                <circle cx="50" cy="50" r="20" fill="#4285f4"/>
+                <rect x="100" y="30" width="40" height="40" fill="#34a853"/>
+                <polygon points="170,20 190,60 150,60" fill="#ea4335"/>
+                <text x="100" y="85" text-anchor="middle" font-family="Arial" font-size="12">Test Image</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Extension Features to Test:</h2>
+        <ul>
+            <li>📝 <strong>Context Menu:</strong> Right-click on selected text to access features</li>
+            <li>🎯 <strong>Extension Popup:</strong> Click the extension icon in the toolbar</li>
+            <li>⌨️ <strong>Keyboard Shortcuts:</strong> Try Ctrl+Shift+L to open the popup</li>
+            <li>🌙 <strong>Dark Mode:</strong> Toggle dark mode in the popup</li>
+            <li>📚 <strong>Bookmarks:</strong> Save results and view them in "My Bookmarks"</li>
+            <li>📱 <strong>Offline Mode:</strong> Test functionality without internet connection</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Troubleshooting:</h2>
+        <ul>
+            <li>If the extension doesn't load, check the console for errors in <code>chrome://extensions/</code></li>
+            <li>Make sure all files are present in the extension directory</li>
+            <li>Verify that the manifest.json is valid JSON</li>
+            <li>Check if Chrome's experimental AI features are enabled (if available)</li>
+            <li>Reload the extension after making any changes</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some interactivity to help with testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AI Learning Assistant test page loaded');
+            
+            // Highlight text when selected
+            document.addEventListener('mouseup', function() {
+                const selection = window.getSelection();
+                if (selection.toString().length > 0) {
+                    console.log('Text selected:', selection.toString().substring(0, 50) + '...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

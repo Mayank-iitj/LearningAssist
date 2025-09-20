@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Learning Assistant - Feedback</title>
+  <link rel="stylesheet" href="styles/popup.css">
+  <style>
+    .feedback-container {
+      width: 400px;
+      min-height: 300px;
+      padding: 16px;
+    }
+    
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .form-group label {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    .rating-group {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .star {
+      font-size: 24px;
+      color: #ddd;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .star.selected,
+    .star:hover {
+      color: #ffd700;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .submit-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .privacy-note {
+      font-size: 12px;
+      color: var(--placeholder-color);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="feedback-container">
+    <header>
+      <h1>Share Your Feedback</h1>
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Dark Mode</span>
+      </div>
+    </header>
+    
+    <form class="feedback-form" id="feedbackForm">
+      <div class="form-group">
+        <label for="featureUsed">Which feature did you use?</label>
+        <select id="featureUsed" required>
+          <option value="">Select a feature</option>
+          <option value="summarizer">Text Summarization</option>
+          <option value="rewriter">Text Rewriting</option>
+          <option value="translator">Translation</option>
+          <option value="proofreader">Proofreading</option>
+          <option value="prompter">Question Generation</option>
+          <option value="image">Image Analysis</option>
+          <option value="general">General Extension</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>How would you rate your experience?</label>
+        <div class="rating-group">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <input type="hidden" id="rating" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="feedback">Your feedback (optional):</label>
+        <textarea id="feedback" placeholder="Tell us what worked well or what could be improved..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>What type of feedback is this?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="feedbackType" value="bug">
+            <span>Bug report</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="feedbackType" value="feature">
+            <span>Feature request</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="feedbackType" value="improvement">
+            <span>Improvement suggestion</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="feedbackType" value="praise">
+            <span>General praise</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="submit-section">
+        <button type="button" id="cancelBtn" class="secondary-btn">Cancel</button>
+        <button type="submit" class="primary-btn">Submit Feedback</button>
+      </div>
+    </form>
+    
+    <div class="privacy-note">
+      Your feedback is stored locally and helps improve the extension. No personal information is collected.
+    </div>
+  </div>
+  
+  <script src="scripts/feedback.js"></script>
+</body>
+</html>
